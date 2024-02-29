@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de usuario</title>
+</head>
+
+<body>
+    <h1>Perfil de Usuario</h1>
+    <p>Nombre: {{ user.first_name }}</p>
+    <p>Apellido: {{ user.last_name }}</p>
+    <p>Correo electrónico: {{ user.email }}</p>
+    <button id="logout_btn">Logout</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const logoutBtn = document.getElementById('logout_btn')
+
+            logoutBtn.addEventListener('click', async function () {
+                console.log('clic')
+                try {
+                    const response = await fetch('/api/sessions/logout', {
+                        method: 'POST'
+                    })
+                    if (response.ok) {
+                        console.log('Logout exitoso')
+                        window.location.href = '/'
+                    } else {
+                        console.error('Error en el logout:', response.status);
+                        alert('Error en el logout. Inténtalo de nuevo más tarde.')
+                    }
+                } catch (error) {
+                    console.error('Error en el logout:', error)
+                    alert('Error en el logout. Inténtalo de nuevo más tarde.')
+                }
+            })
+
+        })
+
+    </script>
+</body>
+
+</html>
