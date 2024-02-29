@@ -13,6 +13,7 @@ app.listen(port, () => console.log(`Server online on port ${port}`))
 
 app.use(cookieParser())
 
+
 //Middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -22,9 +23,6 @@ app.engine('handlebars', handlebars.engine())
 app.set('views', __dirname + '/views')
 app.set('view engine', 'handlebars')
 app.use(express.static(__dirname + '/public'))
-
-
-
 
 //Routes
 app.use('/', usersRouter)

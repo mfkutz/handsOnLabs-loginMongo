@@ -24,6 +24,16 @@ usersRouter.get('/register', (req, res) => {
     }
 })
 
+usersRouter.get('/registered', (req, res) => {
+    try {
+        res.render("registered", {
+            style: "/css/styles.css",
+            title: 'User registered'
+        })
+    } catch (error) {
+        res.status(400).send("Internal server error", error)
+    }
+})
 
 
 

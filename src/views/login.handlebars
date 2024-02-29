@@ -12,20 +12,21 @@
         <h1>Login</h1>
         <form action="/api/sessions/login" method="POST">
             <div class="section_box">
-                <label for="first_name">Email</label>
-                <input type="text" id="first_name" name="email">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
             </div>
 
             <div class="section_box">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" required>
             </div>
             <button type="submit">Sing in</button>
             <p class="message" id="message"></p>
             <p>Don't have an account? <a href="/register">Sing Up</a></p>
         </form>
     </main>
-    <script src="../public/js/login.js"></script>
+
+    <script src="/js/login.js"></script>
 </body>
 
 </html>

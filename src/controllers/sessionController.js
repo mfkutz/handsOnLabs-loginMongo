@@ -7,8 +7,7 @@ async function registerUser(req, res) {
         const existingUser = await usersModel.findOne({ email })
 
         if (existingUser) {
-            /* return res.status(400).json({ message: "El usuario ya existe" }) */
-            return res.status(400).send('Ya existe un usuario con ese correo')
+            return res.status(400).json({ message: "El usuario ya existe" })
         }
 
         const newUser = new usersModel({
@@ -19,13 +18,12 @@ async function registerUser(req, res) {
             password
         })
 
+        if (email === "adminCoder@coder.com" && password === "adminCod3r123") {
+            newUser.role = "admin"
+        }
+
         await newUser.save()
-        /* res.status(201).json({ message: 'Usuario registrado correctamente' }) */
-        /* res.status(201).send('Usuario registrado') */
-        res.render('registered', {
-            style: "/css/styles.css",
-            title: "New user created",
-        })
+        res.status(201).send('Usuario registrado')
 
     } catch (error) {
         console.error('Error al registrar usuario:', error)
